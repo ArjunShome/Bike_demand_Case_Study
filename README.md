@@ -5,6 +5,7 @@ In such an attempt, BoomBikes aspires to understand the demand for shared bikes 
 Which variables are significant in predicting the demand for shared bikes.
 How well those variables describe the bike demands.
 Based on various meteorological surveys and people's styles, the service provider firm has gathered a large dataset on daily bike demands across the American market based on some factors.
+
 Step 1: Data Preparation
 
 In the dataset it can be observed that some of the variables like 'weathersit' and 'season' have values as 1, 2, 3, 4 which have specific labels associated with them (as can be seen in the data dictionary). These numeric values associated with the labels may indicate that there is some order to them - which is actually not the case. So, we can convert such feature values into categorical string values before proceeding with model building.
