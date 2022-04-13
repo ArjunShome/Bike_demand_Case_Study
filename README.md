@@ -1,52 +1,24 @@
-# Project Name
-> Outline a brief description of your project.
+A US bike-sharing provider BoomBikes has recently suffered considerable dips in their revenues due to the ongoing 'COVID-19 pandemic'. The company is finding it very difficult to sustain in the current market scenario. So, it has decided to come up with a mindful business plan to be able to accelerate its revenue as soon as the ongoing lockdown comes to an end, and the economy restores to a healthy state.
 
+In such an attempt, BoomBikes aspires to understand the demand for shared bikes among the people after this ongoing quarantine situation ends across the nation due to COVID-19. They have planned this to prepare themselves to cater to the people's needs once the situation gets better all around and stand out from other service providers and make huge profits. Specifically, they want to understand the factors affecting the demand for these shared bikes in the American market. The company wants to know:
 
-## Table of Contents
-* [General Info](#general-information)
-* [Technologies Used](#technologies-used)
-* [Conclusions](#conclusions)
-* [Acknowledgements](#acknowledgements)
+Which variables are significant in predicting the demand for shared bikes.
+How well those variables describe the bike demands.
+Based on various meteorological surveys and people's styles, the service provider firm has gathered a large dataset on daily bike demands across the American market based on some factors.
+Step 1: Data Preparation
 
-<!-- You can include any other section that is pertinent to your problem -->
+In the dataset it can be observed that some of the variables like 'weathersit' and 'season' have values as 1, 2, 3, 4 which have specific labels associated with them (as can be seen in the data dictionary). These numeric values associated with the labels may indicate that there is some order to them - which is actually not the case. So, we can convert such feature values into categorical string values before proceeding with model building.
 
-## General Information
-- Provide general information about your project here.
-- What is the background of your project?
-- What is the business probem that your project is trying to solve?
-- What is the dataset that is being used?
+Also, the column 'yr' with two values 0 and 1 indicates the years 2018 and 2019 respectively. At the first instinct, one might can think it is a good idea to drop this column as it only has two values so it might not be a value-add to the model. But in reality, since these bike-sharing systems are slowly gaining popularity, the demand for these bikes is increasing every year proving that the column 'yr' might be a good variable for prediction.
 
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+Step 2: Model Building
 
-## Conclusions
-- Conclusion 1 from the analysis
-- Conclusion 2 from the analysis
-- Conclusion 3 from the analysis
-- Conclusion 4 from the analysis
+In the dataset provided it can be noticed that there are three columns named 'casual', 'registered', and 'cnt'. The variable 'casual' indicates the number casual users who have made a rental. The variable 'registered' on the other hand shows the total number of registered users who have made a booking on a given day. Finally, the 'cnt' variable indicates the total number of bike rentals, including both casual and registered. The model is to be built taking this 'cnt' as the target variable.
 
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+Step 3: Model Evaluation
 
+Once done with model building and residual analysis and have made predictions on the test set, calculating the R-squared score on the test set would be a great measure to evaluate the model.
 
-## Technologies Used
-- library - version 1.0
-- library - version 2.0
-- library - version 3.0
-
-<!-- As the libraries versions keep on changing, it is recommended to mention the version of library used in this project -->
-
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- References if any...
-- This project was based on [this tutorial](https://www.example.com).
-
-
-## Contact
-Created by [@githubusername] - feel free to contact me!
-
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
+from sklearn.metrics import r2_score
+r2_score(y_test, y_pred)
+where y_test is the test data set for the target variable, and y_pred is the variable containing the predicted values of the target variable on the test set.
